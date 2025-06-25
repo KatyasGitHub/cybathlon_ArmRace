@@ -11,7 +11,7 @@ while True:
     if keyboard.is_pressed('esc'):
         break
 
-    r = requests.get(f"{ESP_HOST}/capture.jpg", timeout=5)
+    r = requests.get(f"{ESP_HOST}/capture.jpg", timeout=15)
     if r.ok:
         key = keyboard.read_key()
         if   key.lower() == 's': cls = "sphere"
