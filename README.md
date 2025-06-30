@@ -21,9 +21,8 @@ End‑to‑end workflow for **capturing**, **labelling**, **training** and **run
 
 ### 2.1 Flash the ESP32‑CAM
 
-1. Open **`camera/arduino_code/esp32cam_stream/esp32cam_stream.ino`** in the Arduino IDE.
-2. Fill in SSID/PASS if you prefer STA mode (defaults to soft‑AP).
-3. Upload. The serial monitor prints:
+1. Open **`camera/arduino_code/camera/camera.ino`** in the Arduino IDE.
+2. Upload. The serial monitor prints:
 
    ```text
    AP SSID : CybathlonCamera
@@ -43,7 +42,7 @@ python tools/collect_data.py \
 ```
 
 Rotate / move the object while the script runs and stop with **Ctrl‑C**.
-Aim for **≥ 300 images *per class*** under varied lighting.
+Aim for **≥ 150 images *per class*** under varied lighting.
 
 > Prefer manual capture? Open `/capture.jpg` in a browser and hit **Save As…** repeatedly or use `curl -o img%04d.jpg` in a loop.
 
@@ -98,7 +97,7 @@ dataset/
    train: images/train
    val:   images/val
    nc: 3
-   names: [cube, cylinder, sphere]
+   names: [paralellepiped, cylinder, sphere] 
    ```
 2. Fine‑tune a tiny model:
 
@@ -106,7 +105,7 @@ dataset/
    yolo detect train \
         model=yolov8n.pt \
         data=data.yaml \
-        epochs=100 \
+        epochs=60 \
         imgsz=640 \
         lr0=1e-3
    ```
@@ -119,16 +118,16 @@ dataset/
 
 ### 6.1 Flash streaming firmware
 
-Upload **`esp32cam_stream.ino`** (adds `/stream` MJPEG endpoint and serial LED control).
+Upload **`camera.ino`** (adds `/stream` MJPEG endpoint and serial LED control).
 
 ### 6.2 Run the client
 
 ```bash
-python stream_infer.py 192.168.4.1   # ESP32‑CAM IP
+python computer_vision/gui_stream.py 192.168.4.1   # ESP32‑CAM IP
 ```
 
 * Shows live window with boxes + centres.
-* Saves every detection to `detections.csv`.
+* Check Box "Show Video" in case you want to see the video together with the guiding arrow
 
 ---
 
@@ -136,29 +135,6 @@ python stream_infer.py 192.168.4.1   # ESP32‑CAM IP
 
 * In the Arduino serial monitor send **`F`** → LED ON, **`O`** → LED OFF.
 * Or adapt the firmware to expose `/flash?state=1` and toggle via HTTP.
-
----
-
-## 8 · Directory Layout
-
-```
-project/
-├─ firmware/
-│  └─ esp32cam_stream/
-│     └─ esp32cam_stream.ino
-├─ tools/
-│  ├─ collect_data.py      # grabs /capture.jpg every N s
-│  ├─ split_dataset.py     # 80 / 20 mover
-│  └─ …
-├─ dataset/
-│  ├─ images_all/          # raw captures
-│  ├─ labels_all/          # manual labels
-│  ├─ images/{train,val}/
-│  └─ labels/{train,val}/
-├─ runs/                   # YOLO output
-├─ stream_infer.py         # real‑time client
-└─ README.md
-```
 
 
 
