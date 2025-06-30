@@ -95,7 +95,7 @@ Each image now has a matching `.txt`:
 Run the helper once:
 
 ```bash
-python tools/split_dataset.py
+python dataset_separation.py
 ```
 
 It moves images and labels into:
@@ -146,8 +146,8 @@ Upload **`camera.ino`** (adds `/stream` MJPEG endpoint and serial LED control).
 python computer_vision/gui_stream.py 192.168.4.1   # ESP32‑CAM IP
 ```
 
-* Shows live window with boxes + centres.
-* Check Box "Show Video" in case you want to see the video together with the guiding arrow
+* Tick **Show video** to see the MJPEG stream.  
+* In pointer‑only mode an arrow guides the robot gripper; *GRAB!* appears once the target is centred.
 
 ---
 
@@ -155,6 +155,16 @@ python computer_vision/gui_stream.py 192.168.4.1   # ESP32‑CAM IP
 
 * In the Arduino serial monitor send **`F`** → LED ON, **`O`** → LED OFF.
 * Or adapt the firmware to expose `/flash?state=1` and toggle via HTTP.
+
+---
+## 8 · Cleaning Up
+
+```bash
+conda deactivate        # leave the env
+conda env remove -n cyba # optional: delete the env
+```
+
+---
 
 
 
