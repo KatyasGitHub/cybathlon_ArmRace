@@ -1,6 +1,27 @@
 # Cybathlon Object‑Detection Pipeline
 
 End‑to‑end workflow for **capturing**, **labelling**, **training** and **running** a YOLOv8 detector that recognises *spheres, cubes and cylinders* from an **ESP32‑CAM** Wi‑Fi stream and returns each object’s **image‑plane centre**.
+---
+
+## 0 · Quick Start
+
+```bash
+# clone & enter repo
+git clone https://github.com/KatyasGitHub/cybathlon_ArmRace.git -b object_classification
+cd cybathlon_ArmRace
+
+# create Python env
+conda create -n cyba python=3.10 -y   # or use venv
+conda activate cyba
+
+pip install torch==2.1.0+cpu torchvision==0.16.0+cpu torchaudio==2.1.0+cpu \
+             -f https://download.pytorch.org/whl/torch_stable.html
+
+# install all Python deps
+pip install -r requirements.txt
+```
+
+> **Note:** PyTorch wheels in `requirements.txt` target CUDA 12.1. If you have a different CUDA version or want CPU‑only, install the matching wheels first, then run `pip install -r requirements.txt --no-deps`.
 
 ---
 
