@@ -35,10 +35,9 @@ End‑to‑end workflow for **capturing**, **labelling**, **training** and **run
 
 ```bash
 conda activate cyba   # or any env with requests installed
-python tools/collect_data.py \
+python camera/collect_data/data_collection.py \
        --ip 192.168.4.1 \
-       --out dataset/images_all \
-       --interval 1            # seconds between frames
+       --out dataset/images_all 
 ```
 
 Rotate / move the object while the script runs and stop with **Ctrl‑C**.
