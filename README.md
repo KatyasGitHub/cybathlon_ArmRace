@@ -1,6 +1,27 @@
 # Cybathlon Object‑Detection Pipeline
 
 End‑to‑end workflow for **capturing**, **labelling**, **training** and **running** a YOLOv8 detector that recognises *spheres, cubes and cylinders* from an **ESP32‑CAM** Wi‑Fi stream and returns each object’s **image‑plane centre**.
+---
+
+## 0 · Quick Start
+
+```bash
+# clone & enter repo
+git clone https://github.com/KatyasGitHub/cybathlon_ArmRace.git -b object_classification
+cd cybathlon_ArmRace
+
+# create Python env
+conda create -n cyba python=3.10 -y   # or use venv
+conda activate cyba
+
+pip install torch==2.1.0+cpu torchvision==0.16.0+cpu torchaudio==2.1.0+cpu \
+             -f https://download.pytorch.org/whl/torch_stable.html
+
+# install all Python deps
+pip install -r requirements.txt
+```
+
+> **Note:** PyTorch wheels in `requirements.txt` target CUDA 12.1. If you have a different CUDA version or want CPU‑only, install the matching wheels first, then run `pip install -r requirements.txt --no-deps`.
 
 ---
 
@@ -74,7 +95,7 @@ Each image now has a matching `.txt`:
 Run the helper once:
 
 ```bash
-python tools/split_dataset.py
+python dataset_separation.py
 ```
 
 It moves images and labels into:
@@ -125,8 +146,8 @@ Upload **`camera.ino`** (adds `/stream` MJPEG endpoint and serial LED control).
 python computer_vision/gui_stream.py 192.168.4.1   # ESP32‑CAM IP
 ```
 
-* Shows live window with boxes + centres.
-* Check Box "Show Video" in case you want to see the video together with the guiding arrow
+* Tick **Show video** to see the MJPEG stream.  
+* In pointer‑only mode an arrow guides the robot gripper; *GRAB!* appears once the target is centred.
 
 ---
 
@@ -134,6 +155,16 @@ python computer_vision/gui_stream.py 192.168.4.1   # ESP32‑CAM IP
 
 * In the Arduino serial monitor send **`F`** → LED ON, **`O`** → LED OFF.
 * Or adapt the firmware to expose `/flash?state=1` and toggle via HTTP.
+
+---
+## 8 · Cleaning Up
+
+```bash
+conda deactivate        # leave the env
+conda env remove -n cyba # optional: delete the env
+```
+
+---
 
 
 
