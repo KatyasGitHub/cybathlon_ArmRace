@@ -29,23 +29,23 @@
 import requests
 import pathlib
 import time
-from pynput import keyboard  # 使用 pynput 不需要 root
+from pynput import keyboard  # Using pynput does not require root access. | 使用 pynput 不需要 root
 
-ESP_HOST = "http://192.168.0.33"       # ⚠️ 这里改成你的摄像头 IP
+ESP_HOST = "http://192.168.0.33"       # ⚠️ Change this to your camera’s IP address. | ⚠️ 这里改成你的摄像头 IP
 OUT_DIR  = pathlib.Path("dataset")     # dataset/sphere/ … cube/ … cylinder/
 
-# ⚠️ 创建文件夹
+# ⚠️ Create folders | ⚠️ 创建文件夹
 for cls in ("sphere", "cube", "cylinder"):
     (OUT_DIR/cls).mkdir(parents=True, exist_ok=True)
 
 n = 0
-shape = None    # 当前要保存的类别
-keep_running = True  # 是否继续运行
+shape = None    #  The category to be saved now | 当前要保存的类别
+keep_running = True  # Continue running or not | 是否继续运行
 
 print("[s]=sphere (球体)  [q]=cube (立方体)  [c]=cylinder (圆柱体)  [ESC]=quit")
 
 # ------------------------------
-# 键盘监听函数
+# Keyboard listener function | 键盘监听函数
 # ------------------------------
 def on_press(key):
     global shape, keep_running
@@ -63,14 +63,14 @@ def on_press(key):
         if key == keyboard.Key.esc:
             print("[ESC] pressed: 程序即将退出。")
             keep_running = False
-            return False  # 停止监听器
+            return False  # Stop the listener | 停止监听器
 
-# 启动监听器
+# Start the listener | 启动监听器
 listener = keyboard.Listener(on_press=on_press)
 listener.start()
 
 # ------------------------------
-# 主循环
+# Main loop | 主循环
 # ------------------------------
 while keep_running:
     try:
