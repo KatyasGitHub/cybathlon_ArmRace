@@ -75,10 +75,10 @@ void setup() {
   delay(1000);
 
   pinMode(FLASH_PIN, OUTPUT);      // <─ NEW: allow direct LED control
-  //digitalWrite(FLASH_PIN, LOW);    // start with LED off
+  digitalWrite(FLASH_PIN, LOW);    // start with LED off
 
     // ======【★ 这里改为开机自动点亮闪光灯 ★】======
-  digitalWrite(FLASH_PIN, HIGH);    // 开机自动点亮闪光灯
+  // digitalWrite(FLASH_PIN, HIGH);    // 开机自动点亮闪光灯
 
   auto res = esp32cam::Resolution::find(640, 480);
   esp32cam::Config cfg;
@@ -120,10 +120,10 @@ void loop() {
   /* --- NEW: simple serial command parser --- */
   if (Serial.available()) {
     char cmd = Serial.read();
-//     if (cmd == 'F' || cmd == 'f') {
-//       digitalWrite(FLASH_PIN, HIGH);      // torch ON
-//       Serial.println("Flash ON");
-//     }
+    if (cmd == 'F' || cmd == 'f') {
+      digitalWrite(FLASH_PIN, HIGH);      // torch ON
+      Serial.println("Flash ON");
+    }
     else if (cmd == 'O' || cmd == 'o') {
       digitalWrite(FLASH_PIN, LOW);       // torch OFF
       Serial.println("Flash OFF");
