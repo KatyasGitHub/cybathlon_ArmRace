@@ -1,0 +1,5 @@
+path: new_dataset                # folder that holds images/ and labels/
+train: images/train          # sub-folder *inside* path
+val:   images/val
+nc: 2                  # number of classes
+names: [cube, cylinder]
