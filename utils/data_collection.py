@@ -1,7 +1,8 @@
 # save_frames.py
 import requests, pathlib, keyboard, time
 
-ESP_HOST = "http://192.168.4.1"        # ESP32-Cam AP or LAN IP
+ESP_HOST = "http://192.168.0.33"        # ESP32-Cam AP or LAN IP
+# # ESP_HOST = "http://192.168.0.33"       # ⚠️ Change this to your camera’s IP address. | ⚠️ 这里改成你的摄像头 IP
 OUT_DIR  = pathlib.Path("dataset")     # dataset/sphere/ … square/
 for cls in ("sphere", "square"): (OUT_DIR/cls).mkdir(parents=True, exist_ok=True)
 
