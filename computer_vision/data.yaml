@@ -1,5 +1,0 @@
-path: dataset                # folder that holds images/ and labels/
-train: images/train          # sub-folder *inside* path
-val:   images/val
-nc: 3                        # number of classes
-names: [sphere, cylinder, paralelepiped]
