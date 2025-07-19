@@ -95,7 +95,7 @@ Each image now has a matching `.txt`:
 Run the helper once:
 
 ```bash
-python utils/dataset_separation.py
+python computer_vision/dataset_separation.py
 ```
 
 It moves images and labels into:
@@ -120,6 +120,10 @@ dataset/
    names: [paralellepiped, cylinder, sphere] 
    ```
 2. Fine‑tune a tiny model:
+please enter the computer_vision folder fisrt:
+   ```bash
+   cd computer_vision/
+   ```
 
    ```bash
    yolo detect train \
