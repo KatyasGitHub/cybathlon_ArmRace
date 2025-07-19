@@ -95,7 +95,7 @@ Each image now has a matching `.txt`:
 Run the helper once:
 
 ```bash
-python dataset_separation.py
+python utils/dataset_separation.py
 ```
 
 It moves images and labels into:
