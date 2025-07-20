@@ -135,7 +135,7 @@ dataset/
    ```
 2. Fine‑tune a tiny model:
 
-please enter the computer_vision folder fisrt:
+please enter the `computer_vision` folder fisrt:
 
    ```bash
    cd computer_vision/
