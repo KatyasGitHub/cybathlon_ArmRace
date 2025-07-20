@@ -54,7 +54,8 @@ pip install -r requirements.txt
 
 > **Note:**
 > - **AP mode:** The ESP32-CAM acts as a WiFi hotspot, and other devices (such as your computer) connect directly to the network created by the ESP32-CAM.
-> - **STA mode:** Both the ESP32-CAM and your computer connect to the same third-party WiFi router and are on the same local network.
+> - **STA mode:** Both the ESP32-CAM and your computer connect to the same third-party WiFi router and are on the same local network. <br>
+> 
 > In this project, we use **AP mode** by default. If you find that AP mode is unstable on your device, you can try switching to **STA mode**.
 
 
