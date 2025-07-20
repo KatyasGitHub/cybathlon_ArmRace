@@ -52,6 +52,15 @@ pip install -r requirements.txt
    STREAM  : http://192.168.4.1/stream
    ```
 
+**Note:**
+
+- **AP mode:** The ESP32-CAM acts as a WiFi hotspot, and other devices (such as your computer) connect directly to the network created by the ESP32-CAM.
+- **STA mode:** Both the ESP32-CAM and your computer connect to the same third-party WiFi router and are on the same local network.
+
+In this project, we use **AP mode** by default. If you find that AP mode is unstable on your device, you can try switching to **STA mode**.
+
+
+
 ### 2.2 Automated snapshot grabber — `collect_data.py`
 
 ```bash
