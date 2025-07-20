@@ -3,7 +3,7 @@ from pathlib import Path
 
 # src_img, src_lbl = Path('dataset/images_all'), Path('computer_vision/dataset/labels_all')
 src_img = Path('computer_vision/dataset/images_all')
-src_lbl = Path('computer_vision/dataset/images_label')
+src_lbl = Path('computer_vision/dataset/labels_all')
 
 imgs = list(src_img.glob('*.*')); random.shuffle(imgs)
 cut = int(0.8 * len(imgs))                          # 80 : 20 split

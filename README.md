@@ -112,12 +112,26 @@ dataset/
 
 1. Create **`data.yaml`**
 
+[//]: # (   ```yaml)
+
+[//]: # (   path: dataset)
+
+[//]: # (   train: images/train)
+
+[//]: # (   val:   images/val)
+
+[//]: # (   nc: 3)
+
+[//]: # (   names: [paralellepiped, cylinder, sphere] )
+
+[//]: # (   ```)
+   
    ```yaml
    path: dataset
    train: images/train
    val:   images/val
    nc: 3
-   names: [paralellepiped, cylinder, sphere] 
+   names: [sphere, cube, cylinder] 
    ```
 2. Fine‑tune a tiny model:
 please enter the computer_vision folder fisrt:

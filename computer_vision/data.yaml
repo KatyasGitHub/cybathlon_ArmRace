@@ -2,4 +2,5 @@ path: dataset
 train: images/train
 val:   images/val
 nc: 3
-names: [paralellepiped, cylinder, sphere] 
+#names: [paralellepiped, cylinder, sphere]
+names: [sphere, cube, cylinder]
