@@ -160,6 +160,29 @@ please enter the `computer_vision` folder fisrt:
 
    Best weights land in `runs/detect/train/weights/best.pt`.
 
+   If you want to use a GPU for training, please use the following command:
+
+   ```bash
+   yolo detect train \
+        model=yolov8n.pt \
+        data=data.yaml \
+        epochs=60 \
+        imgsz=640 \
+        lr0=1e-3 \
+        device=0
+  ```
+
+This will greatly speed up the training process. 
+
+Our configuration is as follows:
+
+- **GPU Model:** NVIDIA GeForce RTX 4060 Ti
+- **VRAM:** 8GB (8188MiB)
+- **Driver Version:** 550.163.01
+- **CUDA Version:** 12.4
+
+Training YOLOv8 took only about 2–3 minutes.
+
 ---
 
 ## 6 · Real‑Time Inference
